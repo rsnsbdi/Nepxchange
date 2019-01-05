@@ -42,6 +42,7 @@ public class Splash extends BaseActivity implements SplashView {
 
         Intent intent= new Intent(this,LoginActivity.class);
         startActivity(intent);
+        finish();
 
 //        mPresenter.attachView(this);
 //        Log.d("hash=",printHashKey(this));

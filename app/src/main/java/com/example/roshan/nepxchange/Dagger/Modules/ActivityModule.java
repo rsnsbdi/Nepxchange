@@ -15,12 +15,12 @@ public class ActivityModule {
         mActivity = activity;
     }
 
-    @Provides
+  //  @Provides
     Activity provideActivity() {
         return mActivity;
     }
 
-    @Provides
+//    @Provides
     Context providesContext() {
         return mActivity;
     }
@@ -35,7 +35,7 @@ public class ActivityModule {
 //        return new FaceBookLoginModule(context);
 //    }
 
-    @Provides
+  //  @Provides
     SessionManager provideSessionManager(Context context){
         return new SessionManager(context);
     }

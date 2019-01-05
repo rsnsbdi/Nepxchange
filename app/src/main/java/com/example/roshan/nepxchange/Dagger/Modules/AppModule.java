@@ -17,22 +17,22 @@ public class AppModule {
         mApplication = application;
     }
 
-    @Provides
-    @Singleton
+//    @Provides
+//    @Singleton
     Application providesApplication() {
         return mApplication;
     }
 
     // Dagger will only look for methods annotated with @Provides
-    @Provides
-    @Singleton
+//    @Provides
+//    @Singleton
     // Application reference must come from AppModule.class
     SharedPreferences providesSharedPreferences(Application application) {
         return PreferenceManager.getDefaultSharedPreferences(application);
     }
 
-    @Provides
-    @Singleton
+//    @Provides
+//    @Singleton
     public Context applicationContext() {
         return mApplication.getApplicationContext();
     }
