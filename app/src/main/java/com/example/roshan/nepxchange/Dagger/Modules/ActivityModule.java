@@ -5,8 +5,10 @@ import android.content.Context;
 
 import com.example.roshan.nepxchange.Utility.SessionManager;
 
+import dagger.Module;
 import dagger.Provides;
 
+@Module
 public class ActivityModule {
 
     private Activity mActivity;
@@ -15,12 +17,12 @@ public class ActivityModule {
         mActivity = activity;
     }
 
-  //  @Provides
+    @Provides
     Activity provideActivity() {
         return mActivity;
     }
 
-//    @Provides
+    @Provides
     Context providesContext() {
         return mActivity;
     }
@@ -35,7 +37,7 @@ public class ActivityModule {
 //        return new FaceBookLoginModule(context);
 //    }
 
-  //  @Provides
+    @Provides
     SessionManager provideSessionManager(Context context){
         return new SessionManager(context);
     }

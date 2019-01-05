@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
 
+import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
@@ -17,6 +18,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+@Module
 public class NetModule {
 
     String mBaseUrl;
@@ -29,24 +31,24 @@ public class NetModule {
         this.mApplication=application;
     }
 
-//    @Provides
-//    @Singleton
+    @Provides
+    @Singleton
     Cache provideOkHttpCache() {
         int cacheSize = 10 * 1024 * 1024; // 10 MiB
         Cache cache = new Cache(mApplication.getCacheDir(), cacheSize);
         return cache;
     }
 
-//    @Provides
-//    @Singleton
+    @Provides
+    @Singleton
     Gson provideGson() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
         return gsonBuilder.create();
     }
 
-//    @Provides
-//    @Singleton
+    @Provides
+    @Singleton
     OkHttpClient provideOkHttpClient(Cache cache) {
         OkHttpClient client = new OkHttpClient
                 .Builder().cache(cache)
@@ -60,8 +62,8 @@ public class NetModule {
         return client;
     }
 
-//    @Provides
-//    @Singleton
+    @Provides
+    @Singleton
     Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
