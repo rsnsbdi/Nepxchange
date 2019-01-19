@@ -13,7 +13,7 @@ import dagger.Component;
 //    ,    RealmModule.class
      })
 public interface ActivityComponent {
-//    void inject(Splash splash);
+    void inject(Splash splash);
 //    void inject(LoginActivity loginActivity);
 //    void inject(RegisterActivity registerActivity);
 //    void inject(VerifyActivity verifyActivity);
