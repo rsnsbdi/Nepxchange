@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="red">#FF003D</color>
+    <color name="blue">#012D6C</color>
+    <color name="light_blue">#E1E5F2</color>
+    <color name="grey">#797979</color>
+    <color name="lighter_blue">#616F9B</color>
+    <color name="light_light_blue">#d1daf5</color>
+    <color name="greenbluemix">#00CCC6</color>
+    <color name="pink">#f13671</color>
+    <color name="green">#098411</color>
+
+    <color name="black_overlay">#66000000</color>
+
+
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
