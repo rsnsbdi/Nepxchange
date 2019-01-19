@@ -1,3 +1,4 @@
+
 package com.example.roshan.nepxchange.UI.Splash;
 
 import android.content.Context;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.ProgressBar;
 
 import com.example.roshan.nepxchange.Base.BaseActivity;
 import com.example.roshan.nepxchange.MainActivity;
@@ -20,13 +22,22 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
+import static com.example.roshan.nepxchange.Dagger.Injector.getActivityComponent;
+
 public class Splash extends BaseActivity implements SplashView {
 
+    int progress = 0;
+    final int pBarMax = 100;
+    ProgressBar horizontal_progressBar;
+
+    @Inject
     SplashPresenter mPresenter;
 
     SessionManager manager;
@@ -38,11 +49,29 @@ public class Splash extends BaseActivity implements SplashView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        getActivityComponent().inject(this);
+
+        mPresenter.attachView(this);
+
+        horizontal_progressBar = findViewById(R.id.horizontal_progressBar);
+
         Log.e("SplashActivity","Launched");
 
-        Intent intent= new Intent(this,LoginActivity.class);
-        startActivity(intent);
-        finish();
+        final Thread pBarThread = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (progress <= pBarMax) {
+                        horizontal_progressBar.setProgress(progress);
+                        sleep(15);
+                        ++progress;
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+
+        pBarThread.start();
 
 //        mPresenter.attachView(this);
 //        Log.d("hash=",printHashKey(this));
