@@ -10,7 +10,7 @@
     <color name="greenbluemix">#00CCC6</color>
     <color name="pink">#f13671</color>
     <color name="green">#098411</color>
-
+    <color name="white"> #ffffff</color>
     <color name="background_color_home">#b6b6b6</color>
 
     <color name="black_overlay">#66000000</color>
