@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.v7.widget.CardView
+    android:id="@+id/cat_cardview"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+
+    card_view:cardBackgroundColor="#fff"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="5dp"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tv_catname"
@@ -11,12 +23,14 @@
         android:textSize="25sp"
         android:text="Cat Name" />
 
-<view
-    android:id="@+id/cat_recyclerview"
-    class="android.support.v7.app.AlertController$RecycleListView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/cat_recyclerview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/tv_catname">
+    </android.support.v7.widget.RecyclerView>
 
-</view>
+    </RelativeLayout>
 
-</RelativeLayout>
+</android.support.v7.widget.CardView>
