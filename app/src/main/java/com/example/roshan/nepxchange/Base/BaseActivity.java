@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.example.roshan.nepxchange.Dagger.Components.ActivityComponent;
+import com.example.roshan.nepxchange.Dagger.Injector;
 import com.example.roshan.nepxchange.Utility.DialogUtility;
 
 
@@ -18,13 +20,13 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Injector.initialiseActivityComponent(this);
+        Injector.initialiseActivityComponent(this);
     }
 
 
-//    public ActivityComponent getActivityComponent(){
-//        return Injector.getActivityComponent();
-//    }
+    public ActivityComponent getActivityComponent(){
+        return Injector.getActivityComponent();
+    }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {

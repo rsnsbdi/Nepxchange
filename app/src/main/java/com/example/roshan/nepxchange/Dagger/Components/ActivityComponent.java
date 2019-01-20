@@ -5,7 +5,6 @@ import com.example.roshan.nepxchange.Dagger.Scopes.PerActivity;
 import com.example.roshan.nepxchange.MainActivity;
 import com.example.roshan.nepxchange.UI.Login.LoginActivity;
 import com.example.roshan.nepxchange.UI.Splash.Splash;
-import com.example.roshan.nepxchange.UI.home.HomeActivity;
 
 import dagger.Component;
 
@@ -14,8 +13,7 @@ import dagger.Component;
 //    ,    RealmModule.class
      })
 public interface ActivityComponent {
-        void inject(HomeActivity homeActivity);
-//    void inject(Splash splash);
+    void inject(Splash splash);
 //    void inject(LoginActivity loginActivity);
 //    void inject(RegisterActivity registerActivity);
 //    void inject(VerifyActivity verifyActivity);

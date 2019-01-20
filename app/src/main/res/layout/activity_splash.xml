@@ -3,18 +3,43 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
     xmlns:tools="http://schemas.android.com/tools"
-    android:theme="@style/NoActionBarTheme"
     tools:context=".UI.Splash.Splash"
-    android:background="#779988">
+    android:background="#f4f3f7">
 
-    <ImageView
-        android:id="@+id/icon"
-        android:background="@drawable/icon"
-        android:layout_width="@dimen/_200sdp"
-        android:layout_height="@dimen/_200sdp"
+  <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+      android:layout_centerHorizontal="true">
+
+      <TextView
+          android:id="@+id/tv_appname"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/app_name_nepali"
+          android:textSize="50sp"
+          android:layout_marginLeft="@dimen/_18sdp"/>
+
+      <ImageView
+          android:id="@+id/icon"
+          android:background="@drawable/icon"
+          android:layout_width="@dimen/_200sdp"
+          android:layout_height="@dimen/_200sdp"
+          android:layout_below="@+id/tv_appname"
+          />
+  </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/horizontal_progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        />
+        android:layout_marginBottom="@dimen/_80sdp"
+        android:progressBackgroundTint="#CCCCCC"
+        android:progressTint="#44C6E2" />
 
 </RelativeLayout>
