@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.roshan.nepxchange.Base.BaseActivity;
 import com.example.roshan.nepxchange.Model.homeModels.Category;
+import com.example.roshan.nepxchange.Model.homeModels.Data;
 import com.example.roshan.nepxchange.R;
 import com.example.roshan.nepxchange.UI.Login.LoginActivity;
 import com.example.roshan.nepxchange.UI.home.adapter.HomeCategoryAdapter;
@@ -35,6 +36,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     String id;
     List<Category> categories;
+    List<Data>dataList;
 
     @Inject
     HomeActivity(){}
@@ -54,9 +56,10 @@ public class HomeActivity extends BaseActivity implements HomeView {
     }
 
     @Override
-    public void getCategory(List<Category> categories) {
+    public void getCategory(List<Category> categories,List<Data> dataList) {
 
         this.categories = categories;
+        this.dataList=dataList;
         initRecyclerView();
     }
 
@@ -73,9 +76,9 @@ public class HomeActivity extends BaseActivity implements HomeView {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         HomeCategoryAdapter homeCategoryAdapter = new HomeCategoryAdapter();
-        homeCategoryAdapter.init(this, categories);
+        homeCategoryAdapter.init(this, categories,dataList);
         recyclerView.setAdapter(homeCategoryAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     private String jsongData() {

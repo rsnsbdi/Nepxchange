@@ -26,5 +26,6 @@ RecyclerView category_recyclerView;
        category_recyclerView =view.findViewById(R.id.cat_recyclerview);
 
 
+
     }
 }

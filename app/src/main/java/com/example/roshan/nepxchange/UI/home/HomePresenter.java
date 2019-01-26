@@ -40,7 +40,7 @@ public class HomePresenter extends BasePresenter<HomeView> {
         Gson gson = new Gson();
         try {
             itemsResponse = gson.fromJson(json, ItemsResponse.class);
-            getMvpView().getCategory(itemsResponse.getCategory());
+            getMvpView().getCategory(itemsResponse.getCategory(),itemsResponse.getData());
         }
         catch (Exception ex){
 

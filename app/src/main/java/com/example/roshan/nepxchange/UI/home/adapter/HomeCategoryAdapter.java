@@ -2,6 +2,7 @@ package com.example.roshan.nepxchange.UI.home.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import com.example.roshan.nepxchange.Model.homeModels.Category;
+import com.example.roshan.nepxchange.Model.homeModels.Data;
 import com.example.roshan.nepxchange.R;
 import com.example.roshan.nepxchange.UI.home.HomeActivity;
 
@@ -18,12 +20,13 @@ import java.util.List;
 public class HomeCategoryAdapter extends RecyclerView.Adapter<ViewHolderCategory> {
     Context mContext;
     List<Category> mList;
+    List<Data>dataList;
 
 
-
-   public void init(Context c, List<Category> modules){
+   public void init(Context c, List<Category> modules, List<Data> dataList){
         this.mContext = c;
         this.mList = modules;
+        this.dataList=dataList;
     }
 
     @NonNull
@@ -37,14 +40,16 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<ViewHolderCategory
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderCategory viewHolderCategory, int i) {
+    public void onBindViewHolder(@NonNull final ViewHolderCategory viewHolderCategory, int i) {
 
        Category category = mList.get(i);
        viewHolderCategory.tv_Category.setText(category.getCat_name());
+       CatergoryChildItemAdapter catergoryChildItemAdapter = new CatergoryChildItemAdapter();
+       catergoryChildItemAdapter.init(mContext,dataList,category.getCat_id());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
+       viewHolderCategory.category_recyclerView.setLayoutManager(linearLayoutManager);
 
-
-
-
+viewHolderCategory.category_recyclerView.setAdapter(catergoryChildItemAdapter);
 
     }
 
