@@ -20,14 +20,12 @@ public class CatergoryChildItemAdapter extends RecyclerView.Adapter<CategoryChil
 
     Context c;
     List<Data> list;
-    int id ;
-
-
+     int id ;
 
     public void init(Context c , List<Data> list,int id){
     this.c= c;
     this.list=list;
-    this.id=id;
+   this.id=id;
 
     }
     @NonNull
@@ -41,17 +39,35 @@ public class CatergoryChildItemAdapter extends RecyclerView.Adapter<CategoryChil
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final CategoryChildItemViewHolder categoryChildItemViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final CategoryChildItemViewHolder categoryChildItemViewHolder, final int i) {
 
         Data data = list.get(i);
-        categoryChildItemViewHolder.imageView.setImageResource(R.drawable.icon);
+//        categoryChildItemViewHolder.imageView.setImageResource(R.drawable.icon);
 //        if(id==data.getId())
 //        {
 
-//            String url=data.getFront_side_image();
-//        Glide.with(c).load(data.getFront_side_image()).into(categoryChildItemViewHolder.imageView);}
-//    }
+            String url=data.getFront_side_image();
+        if(data.getCat_id()==id)
+        {
+            categoryChildItemViewHolder.linearLayout.setVisibility(View.VISIBLE);
+//            categoryChildItemViewHolder.imageView.setVisibility(View.VISIBLE);
+            Glide.with(c).load(data.getFront_side_image()).into(categoryChildItemViewHolder.imageView);
+            categoryChildItemViewHolder.name.setText(data.getModel_name());
+            categoryChildItemViewHolder.price.setText(String.valueOf(data.getPrice()));
+        }
+    else {
+
+            categoryChildItemViewHolder.linearLayout.setVisibility(View.GONE);
+
+//            categoryChildItemViewHolder.imageView.setVisibility(View.GONE);
+//            categoryChildItemViewHolder.name.setVisibility(View.GONE);
+//            categoryChildItemViewHolder.price.setVisibility(View.GONE);
+        }
     }
+
+
+//    }
+
     @Override
     public int getItemCount() {
         return list.size();
