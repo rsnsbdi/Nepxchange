@@ -16,6 +16,7 @@ import com.example.roshan.nepxchange.Base.BaseActivity;
 import com.example.roshan.nepxchange.MainActivity;
 import com.example.roshan.nepxchange.R;
 import com.example.roshan.nepxchange.UI.Login.LoginActivity;
+import com.example.roshan.nepxchange.UI.home.HomeActivity;
 import com.example.roshan.nepxchange.Utility.SessionManager;
 
 import java.security.MessageDigest;
@@ -65,6 +66,12 @@ public class Splash extends BaseActivity implements SplashView {
                         horizontal_progressBar.setProgress(progress);
                         sleep(15);
                         ++progress;
+
+                        if(progress == 100) {
+                            Intent  intent = new Intent(Splash.this, HomeActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
                     }
                 } catch (InterruptedException e) {
                 }
@@ -73,9 +80,6 @@ public class Splash extends BaseActivity implements SplashView {
 
         pBarThread.start();
 
-//        mPresenter.attachView(this);
-//        Log.d("hash=",printHashKey(this));
-//
 //        final String type = getIntent().getStringExtra("type");
 //        final String mFor = getIntent().getStringExtra("for");
 //
@@ -177,4 +181,5 @@ public class Splash extends BaseActivity implements SplashView {
 //        }
 //        return "SHA-1 generation: epic failed";
    }
+
 }
